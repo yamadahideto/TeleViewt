@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_18_081029) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_20_075755) do
+  create_table "choices", force: :cascade do |t|
+    t.string "choice_name", null: false
+    t.integer "location_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_choices_on_location_id"
+  end
+
   create_table "locations", force: :cascade do |t|
-    t.string "name"
-    t.float "longitud"
-    t.float "latitude"
+    t.string "name", null: false
+    t.float "longitud", null: false
+    t.float "latitude", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
