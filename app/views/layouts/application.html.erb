@@ -9,6 +9,14 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag "index"%>
+    <script src = "https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_APY_KEY"] %>&callback=initialize" async></script>
+    <style>
+      #panorama {
+        height: 600px;
+        width: 100%;
+      }
+    </style>
   </head>
 
   <body>
