@@ -37,7 +37,7 @@ function initialize() {
 //   id: 12,
 //   name: "大阪城",
 //   longitud: 135.52545448202227,
-//   latitude: 34.686774364486574,
+//   latitude: c,
 //   created_at: Fri, 19 Jan 2024 16:17:02.059491000 UTC +00:00,
 //   updated_at: Fri, 19 Jan 2024 16:17:02.059491000 UTC +00:00>,
 //  #<Location:0x000000010f746f48
