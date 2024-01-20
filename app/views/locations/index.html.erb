@@ -8,7 +8,23 @@
     <%= link_to "New location", new_location_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
+  <%= form_with(url: "#", class: "contents") do |form| %>
+    <div class="my-5">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-1/2" %>
+    </div>
+    <div class="inline">
+      <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    </div>
+  <% end %>
+  <div id = "panorama">
+  </div>
   <div id="locations" class="min-w-full">
+  <input type="hidden" id="location_data" data-variable = "<%= @locations.to_json %>">
     <%= render @locations %>
   </div>
 </div>
+
+
+
+

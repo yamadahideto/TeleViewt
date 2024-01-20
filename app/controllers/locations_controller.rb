@@ -3,7 +3,9 @@ class LocationsController < ApplicationController
 
   # GET /locations or /locations.json
   def index
-    @locations = Location.all
+    ids = Location.pluck(:id)
+    random_id = ids.sample
+    @locations = Location.find(random_id)
   end
 
   # GET /locations/1 or /locations/1.json
