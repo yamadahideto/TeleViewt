@@ -2,20 +2,33 @@
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
+  <%= link_to "New location", new_location_path, class: "rounded-lg py-2 px-1 bg-blue-600 text-white block font-medium w-28" %>
   <div class = "h-full w-full mx-auto">
-    <h1 class="text-center font-bold text-5xl text-blue-500"> Where is this? </h1>
-    <div class = "h-full mx-auto w-full bg-purple-100 py-5 px-5 my-5 rounded-lg">
+    <div class = "mt-10">
+      <h1 class="text-center font-bold text-5xl text-gray-500"> Where is this? </h1>
+    </div>
+    <div class = "h-full mx-auto w-full bg-gray-500 py-5 px-5 my-5 rounded-lg">
       <div class = "rounded-lg" id = "panorama">
       </div>
     </div>
   </div>
   <div id="locations" class="min-w-full">
   <input type="hidden" id="location_data" data-variable = "<%= @locations.to_json %>">
-
   </div>
-  <%= link_to "New location", new_location_path, class: "rounded-lg py-2 px-1 bg-blue-600 text-white block font-medium w-28" %>
+  <div class = "w-full">
+    <%= form_with url: "#", class: "mx-auto", method: :post do %>
+      <% @answers.each do |answer| %>
+        <div class = "flex items-center justify-center my-4 mx-auto w-52">
+          <div class = "w-6 mr-2">
+            <%=  radio_button_tag 'selected_choice', answer.id %>
+          </div>
+          <div class="flex-grow">
+            <%= label_tag "selected_choice_#{answer.id}", answer.choice_name %>
+          </div>
+        </div>
+      <% end %>
+        <%= submit_tag '回答する', class: "rounded-lg mx-auto py-2 px-1 bg-blue-600 text-white block font-medium w-52" %>
+    <% end %>
+  </div>
+  <%= render "location", location: @locations %>
 </div>
-
-
-
-

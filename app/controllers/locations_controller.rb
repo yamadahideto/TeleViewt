@@ -6,8 +6,7 @@ class LocationsController < ApplicationController
     ids = Location.pluck(:id)
     random_id = ids.sample
     @locations = Location.find(random_id)
-
-    @answer = Choice.find_by(location_id: @locations.id)
+    @answers = Choice.where(location_id: @locations.id)
   end
 
   # GET /locations/1 or /locations/1.json
