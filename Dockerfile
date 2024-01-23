@@ -19,9 +19,13 @@ FROM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libvips pkg-config
+    apt-get install --no-install-recommends -y build-essential git libvips pkg-config && \
+    apt-get install -y libpq-de
 
-RUN apt-get update && apt-get install -y libpq-dev
+# Install packages needed for deployment
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y curl libsqlite3-0 libpq5 && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 
 # Install application gems
