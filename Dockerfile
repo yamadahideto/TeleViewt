@@ -19,8 +19,10 @@ FROM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libvips pkg-config && \
-    apt-get install -y libpq-dev
+    apt-get install --no-install-recommends -y build-essential git libvips pkg-config
+
+RUN apt-get update && apt-get install -y libpq-dev
+
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
