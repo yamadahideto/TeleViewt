@@ -128,3 +128,6 @@ function initialize() {
 //   name: "東京ドイツ村",
 //   longitud: 140.05390912303443,
 //   latitude: 35.40563294591095,
+
+// LoadError: libpq.so.5: cannot open shared object file: No such file or directory - /usr/local/bundle/ruby/3.2.0/gems/pg-1.5.4/lib/pg_ext.so (LoadError)
+// LoadError: libpq.so.5: cannot open shared object file: No such file or directory - /usr/local/bundle/ruby/3.2.0/gems/pg-1.5.4/lib/pg_ext.so (LoadError
