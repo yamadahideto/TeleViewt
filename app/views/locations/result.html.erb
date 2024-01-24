@@ -1,16 +1,13 @@
-<div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+<div class="w-full mx-auto">
+  <% if @final_result_flag == false %>
+    <h1 class="text-center text-5xl">👿👿👿 全問正解ならず... 👿👿👿</h1>
+    <%= image_tag "incorrect.jpeg", class: "w-80% sm:w-8 h-auto mx-auto py-5 px-5 my-5 rounded-lg" %>
+    <%= twitter_share_link("👿👿👿 全問正解ならず... 👿👿👿", "text-justify text-4xl") %>
+  <% else %>
+    <h1 class="text-center text-5xl">🎉🎉🎉 全問正解おめでとう 🎉🎉🎉</h1>
+    <%= image_tag "correct.jpeg", class: "w-80% sm:w-8 h-auto mx-auto py-5 px-5 my-5 rounded-lg" %>
+    <%= twitter_share_link("🎉🎉🎉 全問正解おめでとう 🎉🎉🎉", "text-justify text-4xl") %>
   <% end %>
-  <div class = "h-full w-full mx-auto">
-    <% if @final_result_flag == false %>
-      <h1 class = "text-center text-5xl"> 👿👿👿 全問正解ならず... 👿👿👿 <h1>
-      <%= image_tag "incorrect.jpeg", class: "w-80% sm:w-8 h-auto mx-auto py-5 px-5 my-5 rounded-lg" %>
-    <% else %>
-      <h1 class = "text-center text-5xl"> 🎉🎉🎉 全問正解おめでとう 🎉🎉🎉 <h1>
-      <%= image_tag "correct.jpeg", class: "w-80% sm:w-8 h-auto mx-auto py-5 px-5 my-5 rounded-lg" %>
-    <% end %>
-  </div>
 </div>
 
 

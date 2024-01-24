@@ -1,12 +1,13 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: %i[ show edit update destroy ]
   before_action :initialize_quiz, only: [:index]
-  MAX_QUIZ_COUNT = 5
+  MAX_QUIZ_COUNT = 3
 
   # GET /locations or /locations.json
   def index
     @locations = Location.find(Location.pluck(:id).sample)
     @answers = Choice.where(location_id: @locations.id)
+    session[:location_name] = @locations.name
   end
   # GET /locations/1 or /locations/1.json
   def show

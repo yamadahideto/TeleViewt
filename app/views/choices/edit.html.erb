@@ -1,0 +1,20 @@
+<!-- app/views/choices/edit.html.erb -->
+<%= form_with(model: @choice, local: true) do |form| %>
+  <% if @choice.errors.any? %>
+    <!-- エラーメッセージの表示 -->
+  <% end %>
+
+  <div class="field">
+    <%= form.label :choice_name %>
+    <%= form.text_field :choice_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location_id %>
+    <%= form.collection_select :location_id, @locations, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit '更新' %>
+  </div>
+<% end %>

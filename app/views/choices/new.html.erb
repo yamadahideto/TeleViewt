@@ -1,0 +1,27 @@
+<!-- app/views/choices/new.html.erb -->
+<%= form_with(model: @choice, local: true) do |form| %>
+  <% if @choice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@choice.errors.count, "error") %> prohibited this choice from being saved:</h2>
+      <ul>
+      <% @choice.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :choice_name %>
+    <%= form.text_field :choice_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location_id %>
+    <%= form.collection_select :location_id, @locations, :id, :name, prompt: '場所を選択してください' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit '保存' %>
+  </div>
+<% end %>

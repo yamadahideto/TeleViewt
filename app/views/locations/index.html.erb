@@ -13,7 +13,7 @@
   <input type="hidden" id="location_data" data-variable = "<%= @locations.to_json %>">
   </div>
   <div class = "w-full">
-    <%= form_with url: judgement_locations_path, class: "mx-auto", method: :post do %>
+    <%= form_with url: judgement_locations_path, class: "mx-auto", method: :post, data: { turbo: false } do %>
       <% @answers.each do |answer| %>
         <div class = "flex items-center justify-center my-4 mx-auto w-52">
           <div class = "w-6 mr-2">
@@ -27,5 +27,6 @@
         <%= submit_tag '回答する', id: 'submit-button', class: "rounded-lg mx-auto py-2 px-1 bg-blue-600 text-white block font-medium w-52 cursor-pointer" %>
     <% end %>
   </div>
+  <%= link_to "New choice", new_choice_path, class: "rounded-lg py-2 px-1 bg-blue-600 text-white block font-medium w-28" %>
   <%= render "location", location: @locations %>
 </div>
