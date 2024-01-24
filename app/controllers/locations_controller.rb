@@ -1,14 +1,13 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: %i[ show edit update destroy ]
+  before_action :initialize_quiz, only: [:index]
+  MAX_QUIZ_COUNT = 5
 
   # GET /locations or /locations.json
   def index
-    ids = Location.pluck(:id)
-    random_id = ids.sample
-    @locations = Location.find(random_id)
+    @locations = Location.find(Location.pluck(:id).sample)
     @answers = Choice.where(location_id: @locations.id)
   end
-
   # GET /locations/1 or /locations/1.json
   def show
   end
@@ -53,21 +52,53 @@ class LocationsController < ApplicationController
   # DELETE /locations/1 or /locations/1.json
   def destroy
     @location.destroy!
-
     respond_to do |format|
       format.html { redirect_to locations_url, notice: "Location was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_location
-      @location = Location.find(params[:id])
-    end
+ def judgement
+    @answer_location = params[:selected_choice]
+    check_answer(@answer_location)
 
-    # Only allow a list of trusted parameters through.
-    def location_params
-      params.require(:location).permit(:name, :longitud, :latitude)
+    if session[:quiz_count] >= MAX_QUIZ_COUNT
+      reset_quiz
+      redirect_to result_locations_path
+    else
+      redirect_to root_path
     end
+  end
+
+  def result
+    @final_result_flag = session[:all_correct_flag]
+  end
+
+  private
+
+  def initialize_quiz
+    session[:quiz_count] ||= 0
+    session[:all_correct_flag] = true
+  end
+
+  def check_answer(answer_location)
+    if session[:location_name] != answer_location
+      session[:all_correct_flag] = false
+    end
+    session[:quiz_count] += 1
+  end
+
+  def reset_quiz
+    session[:quiz_count] = 0
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_location
+    @location = Location.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def location_params
+    params.require(:location).permit(:name, :longitud, :latitude)
+  end
 end

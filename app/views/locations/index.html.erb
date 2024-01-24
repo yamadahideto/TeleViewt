@@ -1,7 +1,4 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
   <%= link_to "New location", new_location_path, class: "rounded-lg py-2 px-1 bg-blue-600 text-white block font-medium w-28" %>
   <div class = "h-full w-full mx-auto">
     <div class = "mt-10">
@@ -16,18 +13,18 @@
   <input type="hidden" id="location_data" data-variable = "<%= @locations.to_json %>">
   </div>
   <div class = "w-full">
-    <%= form_with url: "#", class: "mx-auto", method: :post do %>
+    <%= form_with url: judgement_locations_path, class: "mx-auto", method: :post do %>
       <% @answers.each do |answer| %>
         <div class = "flex items-center justify-center my-4 mx-auto w-52">
           <div class = "w-6 mr-2">
-            <%=  radio_button_tag 'selected_choice', answer.id %>
+            <%=  radio_button_tag 'selected_choice', answer.choice_name %>
           </div>
           <div class="flex-grow">
             <%= label_tag "selected_choice_#{answer.id}", answer.choice_name %>
           </div>
         </div>
       <% end %>
-        <%= submit_tag '回答する', class: "rounded-lg mx-auto py-2 px-1 bg-blue-600 text-white block font-medium w-52" %>
+        <%= submit_tag '回答する', id: 'submit-button', class: "rounded-lg mx-auto py-2 px-1 bg-blue-600 text-white block font-medium w-52 cursor-pointer" %>
     <% end %>
   </div>
   <%= render "location", location: @locations %>
