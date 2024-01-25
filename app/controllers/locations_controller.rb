@@ -1,13 +1,12 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: %i[ show edit update destroy ]
-  before_action :initialize_quiz, only: [:index]
   MAX_QUIZ_COUNT = 3
 
   # GET /locations or /locations.json
   def index
     @locations = Location.find(Location.pluck(:id).sample)
     @answers = Choice.where(location_id: @locations.id)
-    session[:location_name] = @locations.name
+    session[:location_name] = @locations.name.strip
   end
   # GET /locations/1 or /locations/1.json
   def show
@@ -59,15 +58,21 @@ class LocationsController < ApplicationController
     end
   end
 
+  def start_quiz
+      session[:quiz_count] = 0
+      session[:all_correct_flag] = true
+      session[:quiz_started] = true
+  end
+
  def judgement
-    @answer_location = params[:selected_choice]
+    @answer_location = params[:selected_choice].strip
     check_answer(@answer_location)
 
     if session[:quiz_count] >= MAX_QUIZ_COUNT
       reset_quiz
       redirect_to result_locations_path
     else
-      redirect_to root_path
+      redirect_to locations_path
     end
   end
 
@@ -77,12 +82,8 @@ class LocationsController < ApplicationController
 
   private
 
-  def initialize_quiz
-    session[:quiz_count] ||= 0
-    session[:all_correct_flag] = true
-  end
-
   def check_answer(answer_location)
+    # stripメソッドで前後の空白を削除
     if session[:location_name] != answer_location
       session[:all_correct_flag] = false
     end
