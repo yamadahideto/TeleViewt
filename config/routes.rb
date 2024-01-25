@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       post "judgement"
       get "result"
+      get "setting_location"
     end
   end
 

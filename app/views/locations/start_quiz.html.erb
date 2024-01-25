@@ -1,10 +1,12 @@
 <div class="w-full">
+  <%= link_to "New location", new_location_path, class: "rounded-lg py-2 px-1 bg-blue-600 text-white block font-medium w-28" %>
   <div class = "h-full w-full mx-auto">
     <div class = "mt-10">
       <h1 class="text-center font-bold text-5xl text-gray-500"> Where is this? </h1>
     </div>
   </div>
 </div>
+<%= link_to "New choice", new_choice_path, class: "rounded-lg py-2 px-1 bg-blue-600 text-white block font-medium w-28" %>
 <div class="w-full mx-auto">
   <div class = "mt-10">
     <h1 class="text-center text-4xl leading-10"> 🌏StreetViewツアーへようこそ🌏 </h1>
@@ -18,7 +20,6 @@
   <div class = "mt-10">
     <p class="text-center text-4xl leading-10"> 全部で5問、全問正解目指して頑張ってください！ </p>
   </div>
-
 </div>
 
 <%= link_to "ツアーへ行く",locations_path, class: "rounded-lg mx-auto mt-10 py-2 px-1 bg-blue-600 text-center text-white block font-medium w-52 cursor-pointer", data: {turbo: false} %>

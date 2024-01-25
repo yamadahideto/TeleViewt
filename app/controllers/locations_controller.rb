@@ -79,6 +79,9 @@ class LocationsController < ApplicationController
   def result
     @final_result_flag = session[:all_correct_flag]
   end
+
+  def setting_location
+  end
   private
 
   def check_answer(answer_location)
