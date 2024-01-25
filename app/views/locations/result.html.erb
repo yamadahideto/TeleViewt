@@ -1,13 +1,20 @@
+<div class="w-full">
+  <div class = "h-full w-full mx-auto">
+    <div class = "mt-10">
+    </div>
+  </div>
+</div>
 <div class="w-full mx-auto">
   <% if @final_result_flag == false %>
-    <h1 class="text-center text-5xl">😩😩😩 全問正解ならず...😩😩😩 <br/> 😡何をしているのですか😡</h1>
+    <h1 class="text-center text-5xl">😩😩😩 全問正解ならず...😩😩😩 <br/> あなたには期待していたのですが...残念です </h1>
     <%= image_tag asset_path("incorrect.jpeg") , class: "w-80% sm:w-8 h-auto mx-auto py-5 px-5 my-5 rounded-lg" %>
-    <%= twitter_share_link("😩😩😩 全問正解ならず...😩😩😩  😡何をしているのですか😡", "text-justify text-4xl") %>
+    <%= twitter_share_link("😩😩😩 全問正解ならず...😩😩😩  あなたには期待していたのですが...残念です", "text-justify text-4xl") %>
   <% else %>
-    <h1 class="text-center text-5xl">🎉🎉🎉 全問正解おめでとう 🎉🎉🎉<br/> 📍あなたはstreetViewマスターです📍</h1>
+    <h1 class="text-center text-5xl">🎉🎉🎉 全問正解おめでとう 🎉🎉🎉<br/> 📍あなたはStreetViewマスターです📍</h1>
     <%= image_tag asset_path("correct.jpeg"), class: "w-80% sm:w-8 h-auto mx-auto py-5 px-5 my-5 rounded-lg" %>
     <%= twitter_share_link("🎉🎉🎉 全問正解おめでとう 🎉🎉🎉 📍あなたはstreetViewマスターです📍", "text-justify text-4xl") %>
   <% end %>
+  <%= link_to "もう一度ツアーへ行く", root_path, class: "rounded-lg mx-auto mt-10 py-2 px-1 bg-blue-600 text-center text-white block font-medium w-52 cursor-pointer", data: {turbo: false} %>
 </div>
 
 

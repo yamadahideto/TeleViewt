@@ -7,4 +7,7 @@ Rails.application.routes.draw do
       get "result"
     end
   end
+
+
+  match '*path', to: redirect('/'), via: :all
 end

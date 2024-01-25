@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: %i[ show edit update destroy ]
-  MAX_QUIZ_COUNT = 3
+  MAX_QUIZ_COUNT = 5
 
   # GET /locations or /locations.json
   def index
@@ -79,7 +79,6 @@ class LocationsController < ApplicationController
   def result
     @final_result_flag = session[:all_correct_flag]
   end
-
   private
 
   def check_answer(answer_location)

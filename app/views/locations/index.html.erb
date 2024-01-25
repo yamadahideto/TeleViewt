@@ -1,6 +1,5 @@
 <script src = "https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_APY_KEY"] %>&callback=initialize" async></script>
 <div class="w-full">
-  <%= link_to "New location", new_location_path, class: "rounded-lg py-2 px-1 bg-blue-600 text-white block font-medium w-28" %>
   <div class = "h-full w-full mx-auto">
     <div class = "mt-10">
       <h1 class="text-center font-bold text-5xl text-gray-500"> Where is this? </h1>
@@ -28,5 +27,4 @@
         <%= submit_tag '回答する', id: 'submit-button', class: "rounded-lg mx-auto py-2 px-1 bg-blue-600 text-white block font-medium w-52 cursor-pointer" %>
     <% end %>
   </div>
-  <%= render "location", location: @locations %>
 </div>
