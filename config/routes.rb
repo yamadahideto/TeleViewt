@@ -9,6 +9,5 @@ Rails.application.routes.draw do
     end
   end
 
-
   match '*path', to: redirect('/'), via: :all
 end

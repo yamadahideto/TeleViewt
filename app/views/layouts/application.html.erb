@@ -10,7 +10,17 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= javascript_include_tag "index", "data-turbo-track": "reload", "data-turbo": "false"%>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KK97DT1Y9R"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-KK97DT1Y9R');
+    </script>
     <script src="https://kit.fontawesome.com/e4d8d66378.js" crossorigin="anonymous"></script>
+
     <style>
       #panorama {
         height: 600px;
